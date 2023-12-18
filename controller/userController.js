@@ -12,7 +12,11 @@ const createUser = async (req, res) => {
 const getAllUsers = async (req, res) => {
   try {
     const allUser = await User.findAll({
-      include: [{model:Todo}],
+      include: [
+        {
+          model:Todo, //display the model Todo belongs to th user
+          attributes: ['todo'], //display only todo text
+        }],
     });
     res.json(allUser);
   } catch (err) {
@@ -23,7 +27,7 @@ const getAllUsers = async (req, res) => {
 const getSingleUser = async (req, res) => {
  
 try {
-  const user = await User.findByPk(req.params.id);
+  const user = await User.findByPk(req.params.id, {include: [{model: Todo, attributes:['todo'] }]});
   if(!user){
     res.status(404).json({message: 'No user with this id'});
     return;
