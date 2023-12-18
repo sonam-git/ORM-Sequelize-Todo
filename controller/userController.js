@@ -1,4 +1,4 @@
-const { User } = require("../model");
+const { User, Todo } = require("../model");
 
 const createUser = async (req, res) => {
   try {
@@ -11,7 +11,9 @@ const createUser = async (req, res) => {
 
 const getAllUsers = async (req, res) => {
   try {
-    const allUser = await User.findAll();
+    const allUser = await User.findAll({
+      include: [{model:Todo}],
+    });
     res.json(allUser);
   } catch (err) {
     res.status(500).json({ err });

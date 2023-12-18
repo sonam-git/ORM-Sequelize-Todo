@@ -1,4 +1,13 @@
-const User = require('./User');
-const Todo = require('./Todo')
+const User = require("./User");
+const Todo = require("./Todo");
 
-module.exports = {User,Todo}
+User.hasOne(Todo, {
+  foreignKey: "user_id",
+  onDelete: "CASCADE",
+});
+
+Todo.belongsTo(User, {
+  foreignKey: "user_id",
+});
+
+module.exports = { User, Todo };
