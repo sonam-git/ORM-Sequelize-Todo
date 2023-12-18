@@ -19,8 +19,16 @@ const getAllUsers = async (req, res) => {
 };
 
 const getSingleUser = async (req, res) => {
-  const { userId } = req.params.id;
-  const user = await User.findOne(userId);
+ 
+try {
+  const user = await User.findByPk(req.params.id);
+  if(!user){
+    res.status(404).json({message: 'No user with this id'});
+    return;
+  }
   res.json(user);
+} catch (err) {
+  res.status(500).json({err})
+}
 };
 module.exports = { createUser, getAllUsers, getSingleUser };
