@@ -1,4 +1,4 @@
-const { Todo, User } = require("../model");
+const { Todo, User } = require("../models");
 
 const createTodo = async (req, res) => {
   try {
@@ -27,4 +27,45 @@ const getTodos = async (req, res) => {
   }
 };
 
-module.exports = { createTodo, getTodos };
+const deleteTodo = async (req, res) => {
+  try {
+    const deletedTodo = await Todo.destroy({
+      where: {
+        id: req.params.todoId,
+      },
+    });
+
+    if (!deletedTodo) {
+      res.status(404).json({ message: "No todo with this id" });
+      return;
+    }
+
+    res.json({ message: "Todo deleted successfully" });
+  } catch (err) {
+    res.status(500).json({ err });
+  }
+};
+
+const updateTodo = async (req, res) => {
+  try {
+    const updatedTodo = await Todo.update(
+      { ...req.body },
+      {
+        where: {
+          id: req.params.todoId,
+        },
+      }
+    );
+
+    if (updatedTodo[0] === 0) {
+      res.status(404).json({ message: "No todo with this id" });
+      return;
+    }
+
+    res.json({ message: "Todo updated successfully" });
+  } catch (err) {
+    res.status(500).json({ err });
+  }
+};
+
+module.exports = { createTodo, getTodos, deleteTodo, updateTodo };

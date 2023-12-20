@@ -1,9 +1,9 @@
 const User = require("./User");
 const Todo = require("./Todo");
 
-User.hasOne(Todo, {
+User.hasMany(Todo, {
   foreignKey: "user_id",
-  onDelete: "CASCADE",
+  onDelete: "CASCADE",  // if we delete user, delete all their todos as well
 });
 
 Todo.belongsTo(User, {

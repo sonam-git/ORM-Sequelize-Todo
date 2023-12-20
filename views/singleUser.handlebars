@@ -1,0 +1,13 @@
+ <h1> {{user.username}}'s Todos</h1>
+<form>
+  <input id='todo' type="text" name="todo" placeholder="Walk the dog"/>
+  <button id="submitBtn">Submit</button>
+</form>
+
+<ul id="todoList">
+  {{#each user.todos as |todo|}}
+    <li>{{todo.todo}}</li>
+  {{/each}}
+</ul>
+ {{!-- <ul class="todoList"><li>{{user.todo.todo}}</li></ul> --}}
+ <script src="/js/todo.js"></script>

@@ -19,14 +19,9 @@ User.init(
       unique: true,
       allowNull: false,
     },
-    email: {
+    password: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true, // no duplicate allowed
-      validate: {
-        isEmail: true, // check if the email you enter is in email format
-        len: [8], // minimun character required in password
-      },
     },
   },
   // {
