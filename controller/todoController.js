@@ -2,15 +2,9 @@ const { Todo, User } = require("../models");
 
 const createTodo = async (req, res) => {
   try {
-    // Extract user ID from the request parameters
-    const userId = req.params.userId;
-
-    // Check if the user with the provided ID exists
-    const user = await User.findByPk(userId);
-    if (!user) {
-      return res.status(404).json({ error: "User not found" });
-    }
-    const newTodo = await Todo.create({ ...req.body, user_id: userId });
+    const newTodo = await Todo.create({ ...req.body,
+       user_id: req.session.user.id  //req.user
+      });
     res.json(newTodo);
   } catch (err) {
     res.status(500).json({ err });
@@ -27,45 +21,45 @@ const getTodos = async (req, res) => {
   }
 };
 
-const deleteTodo = async (req, res) => {
-  try {
-    const deletedTodo = await Todo.destroy({
-      where: {
-        id: req.params.todoId,
-      },
-    });
+// const deleteTodo = async (req, res) => {
+//   try {
+//     const deletedTodo = await Todo.destroy({
+//       where: {
+//         id: req.params.todoId,
+//       },
+//     });
 
-    if (!deletedTodo) {
-      res.status(404).json({ message: "No todo with this id" });
-      return;
-    }
+//     if (!deletedTodo) {
+//       res.status(404).json({ message: "No todo with this id" });
+//       return;
+//     }
 
-    res.json({ message: "Todo deleted successfully" });
-  } catch (err) {
-    res.status(500).json({ err });
-  }
-};
+//     res.json({ message: "Todo deleted successfully" });
+//   } catch (err) {
+//     res.status(500).json({ err });
+//   }
+// };
 
-const updateTodo = async (req, res) => {
-  try {
-    const updatedTodo = await Todo.update(
-      { ...req.body },
-      {
-        where: {
-          id: req.params.todoId,
-        },
-      }
-    );
+// const updateTodo = async (req, res) => {
+//   try {
+//     const updatedTodo = await Todo.update(
+//       { ...req.body },
+//       {
+//         where: {
+//           id: req.params.todoId,
+//         },
+//       }
+//     );
 
-    if (updatedTodo[0] === 0) {
-      res.status(404).json({ message: "No todo with this id" });
-      return;
-    }
+//     if (updatedTodo[0] === 0) {
+//       res.status(404).json({ message: "No todo with this id" });
+//       return;
+//     }
 
-    res.json({ message: "Todo updated successfully" });
-  } catch (err) {
-    res.status(500).json({ err });
-  }
-};
+//     res.json({ message: "Todo updated successfully" });
+//   } catch (err) {
+//     res.status(500).json({ err });
+//   }
+// };
 
-module.exports = { createTodo, getTodos, deleteTodo, updateTodo };
+module.exports = { createTodo};

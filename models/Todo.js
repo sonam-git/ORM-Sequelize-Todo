@@ -14,10 +14,6 @@ Todo.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    isCompleted: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: false,
-    },
     user_id: {
       type: DataTypes.UUID,
       references: {

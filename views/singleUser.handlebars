@@ -1,13 +1,66 @@
- <h1> {{user.username}}'s Todos</h1>
-<form>
-  <input id='todo' type="text" name="todo" placeholder="Walk the dog"/>
-  <button id="submitBtn">Submit</button>
-</form>
+
+<style> body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            margin-bottom: 20px;
+            display: flexbox;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        
+        input, button {
+            padding: 8px;
+            margin-right: 10px;
+        }
+
+        #todoList {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #todoList li {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            margin-bottom: 5px;
+            padding: 10px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+<h1> {{user.username}}'s Todos</h1>
+
+
+        <!-- Display the todo form only for logged-in users -->
+        <form>
+            <input id='todo' type="text" name="todo" placeholder="Walk the dog"/>
+            <button id="addBtn">Add Todo</button>
+        </form>
+  
+
 
 <ul id="todoList">
   {{#each user.todos as |todo|}}
     <li>{{todo.todo}}</li>
   {{/each}}
 </ul>
- {{!-- <ul class="todoList"><li>{{user.todo.todo}}</li></ul> --}}
+  <a href="/users"> <button >back </button> </a>
+  
  <script src="/js/todo.js"></script>

@@ -1,11 +1,11 @@
-const $submitBtn = document.getElementById('submitBtn');
+const $addBtn = document.getElementById('addBtn');
 const $todoInput = document.getElementById('todo');
 
 
-$submitBtn.addEventListener('click', async (event) => {
+$addBtn.addEventListener('click', async (event) => {
   event.preventDefault();
 
-  if ($todoInput.value.trim() === '') {
+  if ($todoInput?.value.trim() === '') {
     return alert('Please enter a todo');
   }
 
@@ -20,7 +20,7 @@ $submitBtn.addEventListener('click', async (event) => {
     });
 
     const data = await response.json();
-    console.log(data);
+   location.reload()
 
   } catch (error) {
     console.log(error);
@@ -28,3 +28,7 @@ $submitBtn.addEventListener('click', async (event) => {
 
 
 });
+
+function goBack() {
+    window.history.back();
+  }

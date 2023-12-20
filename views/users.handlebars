@@ -1,29 +1,55 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Users and Todos</title>
-</head>
-<body>
+{{!-- 
 {{#if loggedInUser}}
   <h1>Welcome {{loggedInUser.username }}</h1>
   <button id="logout">Log Out</button>
-
-   {{else }}
-  <h1>Sign up </h1>
-  <form>
-     <input id="username" type="text" name="username" placeholder="username"/>
-     <input id="password" type="password" name="password" placeholder="password"/>
-     <button id="submitBtn">Log in</button>
-  </form>
   <ul class="userList">
   {{#each users}}
      {{> list_render_partials}}  
   {{/each}}
-  </ul>
+   </ul>
+   {{else }}
+   
+  <h1>Sign up </h1>
+
+  <form>
+     <input id="username" type="text" name="username" placeholder="username"/>
+     <input id="password" type="password" name="password" placeholder="password"/>
+     <button id="submitBtn">Sign Up</button>
+  </form>
+  
+    <h1>Log In </h1>
+
+  <form>
+     <input id="username" type="text" name="username" placeholder="username"/>
+     <input id="password" type="password" name="password" placeholder="password"/>
+     <button id="loginBtn">Log In</button>
+  </form>
 {{/if}}
 
-</body>
-</html>
+ --}}
+
+{{#if loggedInUser}}
+  <h1>Welcome {{loggedInUser.username }}</h1>
+  <button id="logout">Log Out</button>
+  <ul class="userList">
+    {{#each users}}
+      {{> list_render_partials}}  
+    {{/each}}
+  </ul>
+{{else}}
+  <h1>Sign up / Log In</h1>
+
+  <!-- Sign-up form -->
+  <form id="signupForm">
+    <input id="signupUsername" type="text" name="username" placeholder="username"/>
+    <input id="signupPassword" type="password" name="password" placeholder="password"/>
+    <button id="signupBtn">Sign Up</button>
+  </form>
+
+  <!-- Log-in form -->
+  <form id="loginForm">
+    <input id="loginUsername" type="text" name="username" placeholder="username"/>
+    <input id="loginPassword" type="password" name="password" placeholder="password"/>
+    <button id="loginBtn">Log In</button>
+  </form>
+{{/if}}
