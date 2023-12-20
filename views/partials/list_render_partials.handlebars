@@ -1,6 +1,16 @@
-
+<style>
+  .profile-btn{
+    cursor: pointer;
+    height: 30px;
+  }
+  li{
+    background-color: whitesmoke;
+    padding: 10px;
+    margin-bottom: 5px;
+  }
+</style>
 <li>
-  <p>Username: <a href="/users/{{id}}">{{ username}}</a></p>
+  <p>Name:  <a href="/users/{{id}}"><button class="profile-btn"> View {{ username}} Profile</button></a></p>
     <p>Password : {{password}}</p>
   {{!-- <p>{{format_date createdAt}}</p>
   <p>{{format_date updatedAt}}</p> --}}

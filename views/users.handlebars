@@ -1,36 +1,69 @@
-{{!-- 
-{{#if loggedInUser}}
-  <h1>Welcome {{loggedInUser.username }}</h1>
-  <button id="logout">Log Out</button>
-  <ul class="userList">
-  {{#each users}}
-     {{> list_render_partials}}  
-  {{/each}}
-   </ul>
-   {{else }}
-   
-  <h1>Sign up </h1>
 
-  <form>
-     <input id="username" type="text" name="username" placeholder="username"/>
-     <input id="password" type="password" name="password" placeholder="password"/>
-     <button id="submitBtn">Sign Up</button>
-  </form>
+<style>
+  body{
+    padding: 150px;
+     background-color: #f4f4f4;
+       font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+       h1 {
+            color: #f9f5f5;
+            background-color: #868383;
+         padding-left: 10px;
+        
+        }
+
+  form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+     height: 40px;
+    box-shadow: 0 20px 8px rgba(0, 0, 0, 0.1);
+  }
+  .username, {
+flex: 1 0 130px;
+  }
+  .password, .welcome{
+flex: 1 0 130px;
+  }
+  button{
+    flex: 1 0 40px;
+  }
+  .container{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+          .logout-btn {
+     flex: 0 0 100px;
+  }
+button.logout-btn {
+            background-color: #4caf50;
+            color: #fff;
   
-    <h1>Log In </h1>
+            border-radius: 15px;
+            cursor: pointer;
 
-  <form>
-     <input id="username" type="text" name="username" placeholder="username"/>
-     <input id="password" type="password" name="password" placeholder="password"/>
-     <button id="loginBtn">Log In</button>
-  </form>
-{{/if}}
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+button.logout-btn:hover {
+            background-color: hsl(125, 25%, 90%);
+            color: black;
+        }
 
- --}}
+   .userList{
+    list-style-type: none;
+    background-color: #868383;
+    padding: 10px;
+   }
 
+</style>
+<body>
 {{#if loggedInUser}}
-  <h1>Welcome {{loggedInUser.username }}</h1>
-  <button id="logout">Log Out</button>
+<div class="container">
+ <h1 class="welcome">Welcome {{loggedInUser.username }}</h1>
+  <button id="logout" class="logout-btn">Log Out</button>
+</div>
+ 
   <ul class="userList">
     {{#each users}}
       {{> list_render_partials}}  
@@ -41,15 +74,16 @@
 
   <!-- Sign-up form -->
   <form id="signupForm">
-    <input id="signupUsername" type="text" name="username" placeholder="username"/>
-    <input id="signupPassword" type="password" name="password" placeholder="password"/>
+    <input id="signupUsername"  class="username"  type="text" name="username" placeholder=" signup - username"/>
+    <input id="signupPassword"  class="password"  type="password" name="password" placeholder=" signup - password"/>
     <button id="signupBtn">Sign Up</button>
   </form>
 
   <!-- Log-in form -->
   <form id="loginForm">
-    <input id="loginUsername" type="text" name="username" placeholder="username"/>
-    <input id="loginPassword" type="password" name="password" placeholder="password"/>
+    <input id="loginUsername" class="username"  type="text" name="username" placeholder=" login - username"/>
+    <input id="loginPassword" class="password"  type="password" name="password" placeholder=" login - password"/>
     <button id="loginBtn">Log In</button>
   </form>
 {{/if}}
+</body>
