@@ -1,65 +1,65 @@
 
-<style> body {
-               padding: 150px;
-               background-color: #f4f4f4;
-                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-        }
-
-        h1 {
-            color: #f9f5f5;
-            background-color: #868383;
-         padding-left: 10px;
-        
-        }
-
-        form {
-            margin-bottom: 20px;
-            display: flexbox;
-            flex-wrap: wrap;
-            gap: 6px;
-           
-        }
-
-
-input{
-     width: 250px;
-       padding: 8px;
-            margin-right: 10px;
+<style> 
+body {
+  padding: 150px;
+  background-color: #f4f4f4;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
-        #todoList {
-            list-style-type: none;
-            padding: 0;
-        }
 
-        #todoList li {
-            background-color: #fff;
-            border: 1px solid #ddd;
-            margin-bottom: 5px;
-            padding: 10px;
-        }
+h1 {
+  color: #f9f5f5;
+  background-color: #868383;
+  padding: 5px;
+  padding-left: 10px;
+}
 
-        button {
-            background-color: #4caf50;
-            color: #fff;
-            padding: 10px;
-            border-radius: 15px;
-            cursor: pointer;
-            width: 150px;
-            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-        }
+form {
+  margin-bottom: 20px;
+  display: flexbox;
+  flex-wrap: wrap;
+}
 
-        button:hover {
-            background-color: hsl(125, 25%, 90%);
-            color: black;
-        }
-        .container{
-            display: flex;
-            flex-wrap: wrap;
-        }
-        .todo-button{
-            flex: 1 0 130px;
-        }
-    </style>
+input {
+  width: 250px;
+  border-radius: 5px;
+  padding: 8px;
+  margin-right: 10px;
+}
+#todoList {
+  list-style-type: none;
+  padding: 0;
+}
+
+#todoList li {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  margin-bottom: 5px;
+  padding: 10px;
+}
+
+button {
+  background-color: #4caf50;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 150px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+button:hover {
+  background-color: hsl(125, 25%, 90%);
+  color: black;
+}
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.todo-button {
+  flex: 1 0 130px;
+}
+
+</style>
 <h1> {{user.username}}'s Todo List </h1>
 
 <div class="container">

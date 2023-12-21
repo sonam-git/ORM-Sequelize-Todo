@@ -2,6 +2,8 @@
   .profile-btn{
     cursor: pointer;
     height: 30px;
+    background-color: aliceblue;
+    color: black;
   }
   li{
     background-color: whitesmoke;
@@ -10,8 +12,8 @@
   }
 </style>
 <li>
-  <p>Name:  <a href="/users/{{id}}"><button class="profile-btn"> View {{ username}} Profile</button></a></p>
-    <p>Password : {{password}}</p>
+  <p>Name:  <a href="/users/{{id}}"><button class="profile-btn"> View {{capitalizeFirstLetter username}} Profile</button></a></p>
+    <p>Date Created : {{format_date createdAt}}</p>
   {{!-- <p>{{format_date createdAt}}</p>
   <p>{{format_date updatedAt}}</p> --}}
 </li>
