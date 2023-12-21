@@ -61,7 +61,7 @@ button.logout-btn:hover {
 <body>
 {{#if loggedInUser}}
 <div class="container">
- <h1 class="welcome">Welcome {{loggedInUser.username }}</h1>
+ <h1 class="welcome">Welcome {{ capitalizeFirstLetter loggedInUser.username }}</h1>
   <button id="logout" class="logout-btn">Log Out</button>
 </div>
  
