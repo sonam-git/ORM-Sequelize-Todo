@@ -26,6 +26,7 @@ $signupBtn?.addEventListener("click", async (event) => {
       body: JSON.stringify({ username, password }),
     });
     const data = await response.json();
+    console.log(data)
     // location.href = `/users/${data.id}`;
     window.location.href = "/users";
 
@@ -56,7 +57,7 @@ $loginBtn?.addEventListener("click", async (event) => {
   
       const data = await response.json();
       console.log(data);
-      window.location.href = "/users";
+      location.href = `/users/${data.id}`
 
   } catch (error) {
     alert("Invalid credentials");
@@ -74,5 +75,3 @@ $logoutBtn?.addEventListener("click", async () => {
     alert(error);
   }
 });
-
-

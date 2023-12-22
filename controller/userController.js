@@ -6,6 +6,7 @@ const signUpUser = async (req, res) => {
     //save data into req.session object
     req.session.save(() => {
       req.session.user = newUser.get({ plain: true });
+      // res.redirect('/login')
       res.json(newUser);
     });
   } catch (err) {
@@ -15,31 +16,42 @@ const signUpUser = async (req, res) => {
 
 // login user => /api/users/login
 const loginUser = async (req, res) => {
-  
   try {
     const userData = await User.findOne({
       where: { username: req.body.loginUsername },
     });
     if (!userData) {
-      res.status(400).json({ message: "Incorrect email or password. Please try again!" });
+      res
+        .status(400)
+        .json({ message: "Incorrect email or password. Please try again!" });
       return;
     }
     const validPassword = await userData.checkPassword(req.body.loginPassword);
     if (!validPassword) {
-      res.status(400).json({ message: "Incorrect email or password. Please try again!" });
+      res
+        .status(400)
+        .json({ message: "Incorrect email or password. Please try again!" });
       return;
     }
 
     // Once the user successfully logs in, set up the sessions variable 'loggedIn'
     req.session.save(() => {
+      req.session.user = {
+        id: userData.id,
+        username: userData.username,
+      };
       req.session.loggedIn = true;
-      res.status(200).json({ user: userData, message: "You are now logged in!" });
+      req.session.loggedIn = true;
+
+      console.log("user", userData);
+
+      res.status(200).json(userData);
     });
   } catch (err) {
+    console.log(err);
     res.status(500).json({ err });
   }
 };
-
 
 // get all users =>  /users
 const getUser = async (req, res) => {
@@ -77,9 +89,8 @@ const getSingleUser = async (req, res) => {
     });
 
     const user = singleUser.get({ plain: true });
-    res.render("singleUser",
-     { 
-      user ,
+    res.render("singleUser", {
+      user,
     });
   } catch (err) {
     res.status(500).json({ err });

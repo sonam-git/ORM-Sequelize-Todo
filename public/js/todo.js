@@ -20,7 +20,8 @@ $addBtn.addEventListener('click', async (event) => {
     });
 
     const data = await response.json();
-   location.reload()
+    console.log(data)
+  //  location.reload()
 
   } catch (error) {
     console.log(error);

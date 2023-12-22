@@ -2,9 +2,11 @@ const { Todo, User } = require("../models");
 
 const createTodo = async (req, res) => {
   try {
-    const newTodo = await Todo.create({ ...req.body,
-       user_id: req.session.user.id  //req.user
-      });
+    const newTodo = await Todo.create({
+      ...req.body,
+      user_id: req.session.user.id, //req.user
+    });
+
     res.json(newTodo);
   } catch (err) {
     res.status(500).json({ err });
@@ -62,4 +64,4 @@ const getTodos = async (req, res) => {
 //   }
 // };
 
-module.exports = { createTodo};
+module.exports = { createTodo };

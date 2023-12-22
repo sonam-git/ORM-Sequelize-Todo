@@ -1,63 +1,5 @@
 
-<style>
-body {
-  padding: 100px;
-  background-color: #f4f4f4;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-}
-h1 {
-  color: #f9f5f5;
-  background-color: #868383;
-  padding: 5px;
-  padding-left: 10px;
-}
 
-form {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  height: 40px;
-  box-shadow: 0 20px 8px rgba(0, 0, 0, 0.1);
-}
-.welcome {
-  flex: 1 0 130px;
-}
-.password {
-  flex: 1 0 130px;
-}
-button {
-  flex: 1 0 40px;
-}
-.container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-}
-.logout-btn {
-  flex: 0 0 100px;
-  margin-top: 25px;
-  height: 40px;
-}
-button {
-  background-color: #4caf50;
-  color: #fff;
-  border-radius: 5px;
-  cursor: pointer;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-}
-button:hover,
-button.logout-btn:hover {
-  background-color: hsl(125, 25%, 90%);
-  color: black;
-}
-
-.userList {
-  list-style-type: none;
-  background-color: #868383;
-  padding: 10px;
-}
-
-</style>
 <body>
 {{#if loggedInUser}}
 <div class="container">
@@ -77,10 +19,9 @@ button.logout-btn:hover {
   <form id="signupForm">
     <input id="signupUsername"  class="password"  type="text" name="username" placeholder=" signup - username"/>
     <input id="signupPassword"  class="password"  type="password" name="password" placeholder=" signup - password"/>
-    <button id="signupBtn">Sign Up</button>
+    <button id="signupBtn">Sign Up</button> 
   </form>
-
-  <!-- Log-in form -->
+   <!-- Log-in form -->
   <form id="loginForm">
     <input id="loginUsername" class="password"  type="text" name="username" placeholder=" login - username"/>
     <input id="loginPassword" class="password"  type="password" name="password" placeholder=" login - password"/>
@@ -88,3 +29,4 @@ button.logout-btn:hover {
   </form>
 {{/if}}
 </body>
+
