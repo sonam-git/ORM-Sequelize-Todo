@@ -3,10 +3,6 @@ const $signupUsername = document.getElementById("signupUsername");
 const $signupPassword = document.getElementById("signupPassword");
 const $signupBtn = document.getElementById("signupBtn");
 
-const $loginUsername = document.getElementById("loginUsername");
-const $loginPassword = document.getElementById("loginPassword");
-const $loginBtn = document.getElementById("loginBtn");
-
 const $logoutBtn = document.getElementById("logout");
 
 // FOR SIGN UP
@@ -35,36 +31,7 @@ $signupBtn?.addEventListener("click", async (event) => {
   }
 });
 
-// FOR LOGIN
-$loginBtn?.addEventListener("click", async (event) => {
-  event.preventDefault();
-  const loginUsername = $loginUsername?.value.trim();
-  const loginPassword = $loginPassword?.value.trim();
-
-  if (!loginUsername || !loginPassword) {
-    return alert("Username and password must be provided");
-  }
-
-  try {
-    const response = await fetch("/api/users/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        loginUsername: loginUsername,
-        loginPassword: loginPassword,
-       }),
-    });
-  
-      const data = await response.json();
-      console.log(data);
-      // location.href = `/users/${data.id}`
-     
-
-  } catch (error) {
-    alert("Invalid credentials");
-  }
-});
-
+// function to logout 
 $logoutBtn?.addEventListener("click", async () => {
   try {
     const response = await fetch("/api/users/logout", {
@@ -76,3 +43,7 @@ $logoutBtn?.addEventListener("click", async () => {
     alert(error);
   }
 });
+
+function goBack() {
+  window.history.back();
+}

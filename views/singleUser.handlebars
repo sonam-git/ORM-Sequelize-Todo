@@ -86,30 +86,31 @@ span{
 </head>
 
 <body>
-  <h1>{{ user.username}}'s Todo List</h1>
-   
-  <div class="container">
-    <!-- Display the todo form only for logged-in users -->
-    <form class="todo-form">
-      <input id='todo' type="text" name="todo" placeholder="Enter your todo here" />
-    </form>
-    <div class="todo-button">
-      <button id="addBtn">Add Todo</button>
-      <a href="/users"> <button> ← Dashboard</button> </a>
+  
+    <h1>{{capitalizeFirstLetter username}}'s Todo List</h1>
+
+    <div class="container">
+      {{#if loggedInUser}}
+        <!-- Display the todo form only for the logged-in user's own profile -->
+        <form class="todo-form">
+          <input id='todo' type="text" name="todo" placeholder="Enter your todo here" />
+        </form>
+        <div class="todo-button">
+          <button id="addBtn">Add Todo</button>
+          <a href="/users"> <button> ← Dashboard</button> </a>
+        </div>
+      {{/if}}
     </div>
-  </div>
 
-  <ul id="todoList">
-    {{#each user.todos as |todo|}}
-    <li>
-      {{ capitalizeFirstLetter todo.todo}}
-            <span id="deleteBtn" class="delete-icon" data-todo-id="{{todo.id}}"> 🗑️ </span>
-    </li> 
-   
-    {{/each}}
-  </ul>
-
-
+    <ul id="todoList">
+      {{#each user.todos as |todo|}}
+        <li>
+          {{ capitalizeFirstLetter todo.todo}}
+           
+          <span id="deleteBtn" class="delete-icon" data-todo-id="{{todo.id}}"> 🗑️ </span> 
+        </li> 
+      {{/each}}
+    </ul>
   <script src="/js/todo.js"></script>
 </body>
 

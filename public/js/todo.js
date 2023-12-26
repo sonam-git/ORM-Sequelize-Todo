@@ -18,9 +18,8 @@ $addBtn.addEventListener('click', async (event) => {
       }
     });
 
-    const data = await response.json();
-    console.log(data.id)
-  //  location.reload()
+  const data = await response.json();
+   location.reload()
 
   } catch (error) {
     console.log(error);
@@ -33,11 +32,12 @@ $addBtn.addEventListener('click', async (event) => {
 document.addEventListener("DOMContentLoaded", function () {
   // Add event listener to the document, listening for clicks on elements with class 'delete-icon'
   document.addEventListener("click", function (event) {
+    console.log(event);
       // Check if the clicked element has the class 'delete-icon'
       if (event.target.classList.contains("delete-icon")) {
           // Retrieve the todo ID from the data attribute
           const todoId = event.target.getAttribute("data-todo-id");
-          console.log(todoId)
+          // console.log(todoId)
 
           // Call the deleteTodo function with the todo ID
           deleteTodo(todoId);
@@ -58,6 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
               if (response.ok) {
                   // Update the UI or perform additional actions as needed
                   console.log(`Todo with ID ${todoId} deleted successfully.`);
+                  // location.reload();
               } else {
                   // Handle error scenarios
                   console.error("Failed to delete todo.", response.statusText);
@@ -72,8 +73,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-function goBack() {
-    window.history.back();
-  }
+
 
   

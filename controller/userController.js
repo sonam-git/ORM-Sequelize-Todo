@@ -1,4 +1,5 @@
 const { User, Todo } = require("../models");
+// const withAuth = require("../utils/auth");
 // create user => /api/users/signup
 const signUpUser = async (req, res) => {
   try {
@@ -6,10 +7,10 @@ const signUpUser = async (req, res) => {
     //save data into req.session object
     req.session.save(() => {
       req.session.user = newUser.get({ plain: true });
-      // res.redirect('/login')
-      // res.json(newUser);
+    
+      res.json(newUser);
     });
-    res.redirect('/login')
+    
   } catch (err) {
     res.status(500).json({ err });
   }
@@ -41,9 +42,7 @@ const loginUser = async (req, res) => {
         id: userData.id,
         username: userData.username,
       };
-      req.session.loggedIn = true;
-      
-      // console.log("user", userData);
+      req.session.loggedInUser = true;
     
 
       res.status(200).json(userData);
@@ -53,6 +52,7 @@ const loginUser = async (req, res) => {
     res.status(500).json({ err });
   }
 };
+
 
 // get all users =>  /users
 const getUser = async (req, res) => {
@@ -71,6 +71,7 @@ const getUser = async (req, res) => {
       users,
       loggedInUser: req.session.user || null,
     });
+   
   } catch (error) {
     res.status(500).json({ error });
   }
@@ -92,6 +93,7 @@ const getSingleUser = async (req, res) => {
     const user = singleUser.get({ plain: true });
     res.render("singleUser", {
       user,
+      username : user.username,
       loggedInUser: req.session.user || null,
     });
   } catch (err) {
