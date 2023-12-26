@@ -1,4 +1,5 @@
 const express = require("express");
+require('dotenv').config();
 const exphbs = require("express-handlebars");
 const helpers = require("./utils");
 const hbs = exphbs.create({
@@ -22,7 +23,7 @@ app.set("view engine", "handlebars");
 
 // setup express to use sessions & create cookie on the browser
 const sessionConfig = {
-  secret: "super secret",
+  secret: process.env.MY_SECRET,
   resave: false,
   saveUninitialized: false,
 };
