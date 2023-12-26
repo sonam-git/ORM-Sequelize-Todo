@@ -1,84 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
 
-<style> 
-body {
-  padding: 150px;
-  background-color: #f4f4f4;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-}
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User's Todo List</title>
+  <style>
+    /* Your existing styles */
 
-h1 {
-  color: #f9f5f5;
-  background-color: #868383;
-  padding: 5px;
-  padding-left: 10px;
-}
+    body {
+      padding: 150px;
+      background-color: #f4f4f4;
+      font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    }
 
-form {
-  margin-bottom: 20px;
-  display: flexbox;
-  flex-wrap: wrap;
-}
+    h1 {
+      color: #f9f5f5;
+      background-color: #868383;
+      padding: 5px;
+      padding-left: 10px;
+    }
 
-input {
-  width: 250px;
-  border-radius: 5px;
-  padding: 8px;
-  margin-right: 10px;
-}
-#todoList {
-  list-style-type: none;
-  padding: 0;
-}
+    form {
+      margin-bottom: 20px;
+      display: flex;
+      flex-wrap: wrap;
+    }
 
-#todoList li {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  margin-bottom: 5px;
-  padding: 10px;
-}
+    input {
+      width: 250px;
+      border-radius: 5px;
+      padding: 8px;
+      margin-right: 10px;
+    }
 
-button {
-  background-color: #4caf50;
-  color: #fff;
-  padding: 10px;
-  border-radius: 5px;
+    #todoList { 
+      list-style-type: none;
+      padding: 0;
+    }
+
+    #todoList li {
+      display: flex;
+      justify-content: space-between;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      margin-bottom: 5px;
+      padding: 10px;
+    }
+    #todoList li .delete-icon, {
   cursor: pointer;
-  width: 150px;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
-button:hover {
-  background-color: hsl(125, 25%, 90%);
-  color: black;
-}
-.container {
-  display: flex;
-  flex-wrap: wrap;
-}
-.todo-button {
-  flex: 1 0 130px;
+#todoList li .delete-icon:hover,
+#todoList li .update-icon:hover {
+  color: red; /* Change the color as desired */
 }
 
-</style>
-<h1> {{ user.username}}'s Todo List </h1>
+    button {
+      background-color: #4caf50;
+      color: #fff;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 150px;
+      font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    }
 
-<div class="container">
-<!-- Display the todo form only for logged-in users -->
-        <form class="todo-form">
-            <input id='todo' type="text" name="todo" placeholder="Enter your todo here"/>
-        </form>
-      <div class="todo-button">
-         <button id="addBtn">Add Todo</button>
-         <a href="/users"> <button > ← Dashboard</button> </a>
-        </div>
-</div>
-        
-  
-<ul id="todoList">
-  {{#each user.todos as |todo|}}
-    <li>{{ capitalizeFirstLetter todo.todo}}</li>
-  {{/each}}
-</ul>
-  
-  
- <script src="/js/todo.js"></script>
+    button:hover {
+      background-color: hsl(125, 25%, 90%);
+      color: black;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .todo-button {
+      flex: 1 0 130px;
+    }
+span{
+  cursor: pointer;
+}
+  </style>
+</head>
+
+<body>
+  <h1>{{ user.username}}'s Todo List</h1>
+   
+  <div class="container">
+    <!-- Display the todo form only for logged-in users -->
+    <form class="todo-form">
+      <input id='todo' type="text" name="todo" placeholder="Enter your todo here" />
+    </form>
+    <div class="todo-button">
+      <button id="addBtn">Add Todo</button>
+      <a href="/users"> <button> ← Dashboard</button> </a>
+    </div>
+  </div>
+
+  <ul id="todoList">
+    {{#each user.todos as |todo|}}
+    <li>
+      {{ capitalizeFirstLetter todo.todo}}
+            <span id="deleteBtn" class="delete-icon" data-todo-id="{{todo.id}}"> 🗑️ </span>
+    </li> 
+   
+    {{/each}}
+  </ul>
+
+
+  <script src="/js/todo.js"></script>
+</body>
+
+</html>

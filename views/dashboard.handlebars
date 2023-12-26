@@ -1,0 +1,11 @@
+
+<div class="container">
+ <h1 class="welcome">Welcome {{ capitalizeFirstLetter loggedInUser.username }}</h1>
+  <button id="logout" class="logout-btn">Log Out</button>
+</div>
+ 
+  <ul class="userList">
+    {{#each users}}
+      {{> list_render_partials}}  
+    {{/each}}
+  </ul>

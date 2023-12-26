@@ -1,6 +1,6 @@
 
 
-<body>
+<hr>
 {{#if loggedInUser}}
 <div class="container">
  <h1 class="welcome">Welcome {{ capitalizeFirstLetter loggedInUser.username }}</h1>
@@ -14,13 +14,17 @@
   </ul>
 {{else}}
   <h1>Sign up / Log In</h1>
+    <p>If you are new user please use Sign up form.</p>
 
   <!-- Sign-up form -->
+
   <form id="signupForm">
     <input id="signupUsername"  class="password"  type="text" name="username" placeholder=" signup - username"/>
     <input id="signupPassword"  class="password"  type="password" name="password" placeholder=" signup - password"/>
     <button id="signupBtn">Sign Up</button> 
   </form>
+<hr>
+<br><p>If you are already signed up please use Login form.</p>
    <!-- Log-in form -->
   <form id="loginForm">
     <input id="loginUsername" class="password"  type="text" name="username" placeholder=" login - username"/>
@@ -28,5 +32,5 @@
     <button id="loginBtn">Log In</button>
   </form>
 {{/if}}
-</body>
+
 

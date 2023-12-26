@@ -57,7 +57,8 @@ $loginBtn?.addEventListener("click", async (event) => {
   
       const data = await response.json();
       console.log(data);
-      location.href = `/users/${data.id}`
+      // location.href = `/users/${data.id}`
+     
 
   } catch (error) {
     alert("Invalid credentials");

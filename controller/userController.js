@@ -7,8 +7,9 @@ const signUpUser = async (req, res) => {
     req.session.save(() => {
       req.session.user = newUser.get({ plain: true });
       // res.redirect('/login')
-      res.json(newUser);
+      // res.json(newUser);
     });
+    res.redirect('/login')
   } catch (err) {
     res.status(500).json({ err });
   }
@@ -41,9 +42,9 @@ const loginUser = async (req, res) => {
         username: userData.username,
       };
       req.session.loggedIn = true;
-      req.session.loggedIn = true;
-
-      console.log("user", userData);
+      
+      // console.log("user", userData);
+    
 
       res.status(200).json(userData);
     });
@@ -91,6 +92,7 @@ const getSingleUser = async (req, res) => {
     const user = singleUser.get({ plain: true });
     res.render("singleUser", {
       user,
+      loggedInUser: req.session.user || null,
     });
   } catch (err) {
     res.status(500).json({ err });
