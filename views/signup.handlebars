@@ -1,20 +1,4 @@
-
-
-<hr>
-{{#if loggedInUser}}
-<div class="container">
- <h1 class="welcome">Welcome {{ capitalizeFirstLetter loggedInUser.username }}</h1>
-  <button id="logout" class="logout-btn">Log Out</button>
-</div>
-
-  <ul class="userList">
-    <h3>List of Signed up Users </h3>
-    {{#each users}}
-      {{> list_render_partials}}  
-    {{/each}}
-  </ul>
- {{!-- {{else}}
-  <h1>Sign Up</h1>
+<h1>Sign Up</h1>
     <p>If you are new user please use Sign up form.</p>
    
     <a href="/login"> <button> ← Already Signed Up</button> </a>
@@ -27,8 +11,5 @@
     <input id="signupPassword"  class="password"  type="password" name="password" placeholder=" signup - password"/>
     <button id="signupBtn">Sign Up</button> 
   </form>
-<hr> --}}
-
-{{/if}}
-  
+<hr>
 

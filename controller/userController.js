@@ -100,7 +100,14 @@ const getSingleUser = async (req, res) => {
     res.status(500).json({ err });
   }
 };
-
+const displaySignup = (req, res) => {
+  if (req.session.loggedInUser) {
+    res.redirect("/users");
+    return;
+  }
+  // If the user is not logged in, the route renders a template named "signup".
+  res.render("signup");
+}
 const destroySession = (req, res) => {
   req.session.destroy(() => {
     res.json({ sucess: true });
@@ -113,4 +120,5 @@ module.exports = {
   getUser,
   getSingleUser,
   destroySession,
+ displaySignup
 };

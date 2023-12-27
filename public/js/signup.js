@@ -38,7 +38,7 @@ $logoutBtn?.addEventListener("click", async () => {
       method: "POST",
     });
     const data = await response.json();
-    location.reload();
+    window.location.href = "/";
   } catch (error) {
     alert(error);
   }

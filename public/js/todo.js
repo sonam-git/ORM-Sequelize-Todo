@@ -19,7 +19,7 @@ $addBtn.addEventListener('click', async (event) => {
     });
 
   const data = await response.json();
-   location.reload()
+   window.location.reload()
 
   } catch (error) {
     console.log(error);
@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
               if (response.ok) {
                   // Update the UI or perform additional actions as needed
                   console.log(`Todo with ID ${todoId} deleted successfully.`);
-                  // location.reload();
+                  window.location.reload();
               } else {
                   // Handle error scenarios
                   console.error("Failed to delete todo.", response.statusText);
