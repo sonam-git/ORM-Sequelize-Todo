@@ -10,6 +10,12 @@ body {
     padding: 5px;
     padding-left: 10px;
   }
+  h1#heading{
+  font-family: 'Courier New', Courier, monospace;
+  background-color: #4caf50;
+  margin-left: 5px;
+  text-align: center;
+  }
   h3{
     color: white;
   }
