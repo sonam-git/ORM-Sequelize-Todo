@@ -1,7 +1,12 @@
 require('dotenv').config();
 const Sequelize = require("sequelize");
 
-const sequelize = new Sequelize(
+let sequelize;
+
+if (process.env.JAWSDB_URL) {
+  sequelize = new Sequelize(process.env.JAWSDB_URL);
+} else {
+ sequelize = new Sequelize(
   // name of the database you want to connect to
   process.env.DB_NAME,
   // which user do you want to log into
@@ -13,5 +18,5 @@ const sequelize = new Sequelize(
     dialect: "mysql",
     port: 3306,
   }
-);
+);}
 module.exports = sequelize;
