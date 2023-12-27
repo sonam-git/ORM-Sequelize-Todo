@@ -34,7 +34,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(session(sessionConfig)); //this will create req.session object for every req that comes into our server
 
-app.use(routes);
+app.use('/', routes);
 
 // sync db and start the server
 sequelize.sync({ force: false }).then(() => {
